@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<configuration>
+	<proxyurl>http://localhost/endpoint.php</proxyurl>
+	<cleartextlabel>Clear all</cleartextlabel>
+	<circletextlabel>Draw Search Area</circletextlabel>
+	<numberofresults>40</numberofresults>
+</configuration>

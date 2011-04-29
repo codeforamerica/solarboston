@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 - 2009 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	//commment virtual earth map service when using arcgisonline and vice-versa
+	//do not change following mapservice attributes; type, mode 	
+	<mapservice type="tiled" mode="dynamic">http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer</mapservice>
+	<!--mapservice type="virtualearth" mode="dynamic" style="road" label="Aerial">http://localhost/esa/vetoken.ashx</mapservice-->
+</configuration>

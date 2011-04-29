@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+//  dirlengthunits: esriMiles or esriKilometers
+//  
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<locator>http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/TA_Address_NA/GeocodeServer</locator>
+	<minscore>70</minscore>
+	<routetasksolver>http://tasks.arcgisonline.com/ArcGIS/rest/services/NetworkAnalysis/ESRI_Route_NA/NAServer/Route</routetasksolver>
+	<dirlengthunits>esriMiles</dirlengthunits>
+</configuration>
