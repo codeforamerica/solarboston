@@ -43,18 +43,6 @@
                    url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
         </basemaps>
         <operationallayers>
-            <layer label="Demographics" type="tiled" visible="false" alpha="0.5"
-                   url="http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Household_Income/MapServer">
-                <sublayer id="1" popupconfig="popups/PopUp_Demographics_BlockGroups.xml"/>
-                <sublayer id="2" popupconfig="popups/PopUp_Demographics_Tracts.xml"/>   
-                <sublayer id="3" popupconfig="popups/PopUp_Demographics_Counties.xml"/>
-                <sublayer id="4" popupconfig="popups/PopUp_Demographics_States.xml"/>  
-            </layer> 
-            <layer label="Boundaries and Places" type="tiled" visible="false"
-                   url="http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer"/>
-            <layer label="Fires" type="feature" visible="false" alpha="1.0"
-                   popupconfig="popups/PopUp_Fires.xml"
-                   url="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Fire/Sheep/FeatureServer/0"/>                   
         </operationallayers>
     </map>
 
