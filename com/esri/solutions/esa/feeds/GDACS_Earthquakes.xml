@@ -1,9 +1,0 @@
-<configuration>
-	<source>http://www.gdacs.org/xml/RSSEQLite.xml</source>
-	<query></query>
-	<fields>description</fields>
-	<titlefield>title</titlefield>
-	<linkfield>link</linkfield>
-	<refreshrate></refreshrate>
-	<zoomscale>150000</zoomscale>
-</configuration>

@@ -1,4 +1,0 @@
-<configuration>
-	<serviceUrl>http://www.geocommunicator.gov/wmsconnector/com.esri.wms.Esrimap?REQUEST=GetCapabilities&Servicename=BLM_SURFACE_MGT_AGY&</serviceUrl>	
-	<alpha>1</alpha>		
-</configuration>  

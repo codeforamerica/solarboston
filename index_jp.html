@@ -6,7 +6,7 @@
         <meta name="description" content="ESRI ArcGIS viewer for Flex"/>
         <meta name="keywords" content="ESRI, ArcGIS, Flex Viewer"/>
         <meta name="author" content="ESRI"/>
-         
+
         <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and
              the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as
              the percentage of the height of its parent container, which has to be set explicitly.  Fix for
@@ -34,12 +34,9 @@
             <!-- To use express install, set to playerProductInstall.swf, otherwise the empty string. -->
             var xiSwfUrlStr = "playerProductInstall.swf";
             var flashvars = {};
-            //flashvars.localeChain = "en_US";
-            //flashvars.localeChain = "de_DE,en_US";
-            //flashvars.localeChain = "es_ES,en_US";
-            //flashvars.localeChain = "fr_FR,en_US";
-            //flashvars.localeChain = "ja_JP,en_US";
-            //flashvars.localeChain = "zh_CN,en_US";
+            flashvars.localeChain = "ja_JP,en_US";
+            flashvars.config = "apps/ja_JP/config.xml";
+            //Flex Viewer supported locales: en_US, de_DE, es_ES, fr_FR, ja_JP, zh_CN
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";

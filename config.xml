@@ -2,66 +2,104 @@
 <!--
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Copyright © 2008 ESRI
+// Copyright (c) 2010-2011 ESRI
 //
 // All rights reserved under the copyright laws of the United States.
 // You may freely redistribute and use this software, with or
 // without modification, provided you include the original copyright
 // and use restrictions.  See use restrictions in the file:
-// <install location>/FlexViewer/License.txt
+// <install location>/License.txt
+//
+// Read more about ArcGIS Viewer for Flex 2.3 - http://links.esri.com/flexviewer
 //
 ////////////////////////////////////////////////////////////////////////////////
 -->
 <configuration>
-	<userinterface>
-		<banner>visible</banner>
-		<title>Solar Potential Viewer</title>
-		<subtitle>City of Renewable Energy| Clean Energy Authority</subtitle>
-		<logo>com/esri/solutions/flexviewer/assets/images/icons/i_sun.png</logo>
-		<stylesheet>com/esri/solutions/flexviewer/themes/darkangel/style.swf</stylesheet>
-		<menus>
-			<menu id="menuMap" visible="true" icon="com/esri/solutions/flexviewer/assets/images/icons/i_globe.png">Map</menu>
-			<menu id="menuNav" visible="true" icon="com/esri/solutions/flexviewer/assets/images/icons/i_nav.png">Navigation</menu>
-			<menu id="menuWidgets" visible="true" icon="com/esri/solutions/flexviewer/assets/images/icons/i_widget.png">Tools</menu>
-			<menu id="menuHelp" visible="true" icon="com/esri/solutions/flexviewer/assets/images/icons/i_help.png">Help</menu>
-		</menus>
-	</userinterface>
-	<map initialExtent="">
-	<basemaps menu="menuMap">		    
-			<mapservice label="Street Map" type="tiled" visible="true" alpha="1" icon="com/esri/solutions/flexviewer/assets/images/icons/i_highway.png">http://hubmaps.cityofboston.gov/ArcGIS/rest/services/base_maps/base_map/MapServer</mapservice>
-			<!--<mapservice label="Satellite Map" type="tiled" visible="false" alpha="1" icon="com/esri/solutions/flexviewer/assets/images/icons/i_shuttle.png">http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer</mapservice>-->								
-	</basemaps>
-		<livemaps>
-			<mapservice label="Rooftop Radiation" type="tiled" visible="false" alpha="0.8">http://yourmapservicehere/ArcGIS/rest/services/maps/mapservice/MapServer</mapservice> 
-  			<mapservice label="NSTAR District" type="tiled" visible="false" alpha="0.8">http://yourmapservicehere/ArcGIS/rest/services/maps/mapservice/MapServer</mapservice> 
-  			<mapservice label="Historic District" type="tiled" visible="false" alpha="0.8">http://yourmapservicehere/ArcGIS/rest/services/maps/mapservice/MapServer</mapservice> 
-		</livemaps>
-	</map>
-	<navtools>
-		<navtool label="Zoom In" icon="com/esri/solutions/flexviewer/assets/images/icons/i_zoomin.png" menu="menuNav">zoomin</navtool>
-		<navtool label="Zoom Out" icon="com/esri/solutions/flexviewer/assets/images/icons/i_zoomout.png" menu="menuNav">zoomout</navtool>
-		<navtool label="Full Extent" icon="com/esri/solutions/flexviewer/assets/images/icons/i_zoomfull.png" menu="menuNav">zoomfull</navtool>
-		<navtool label="Move Map" icon="com/esri/solutions/flexviewer/assets/images/icons/i_pan.png" menu="menuNav">pan</navtool>
-		<navtool label="Zoom Previous" icon="com/esri/solutions/flexviewer/assets/images/icons/i_zoomprevious.png" menu="menuNav">zoomprevious</navtool>
-		<navtool label="Zoom Next" icon="com/esri/solutions/flexviewer/assets/images/icons/i_zoomnext.png" menu="menuNav">zoomnext</navtool>
-	</navtools>
-	<widgets>
-		<widget label="Live Maps" icon="com/esri/solutions/flexviewer/assets/images/icons/i_folder.png" menu="menuMap" config="com/esri/solutions/flexviewer/widgets/LiveMapsWidget.xml">com/esri/solutions/flexviewer/widgets/LiveMapsWidget.swf</widget>
-		<widget label="Overview Map" icon="com/esri/solutions/flexviewer/assets/images/icons/i_overview.png" menu="menuMap" config="com/esri/solutions/flexviewer/widgets/OverviewMapWidget.xml">com/esri/solutions/flexviewer/widgets/OverviewMapWidget.swf</widget>	
-		<widget label="Bookmarks" icon="com/esri/solutions/flexviewer/assets/images/icons/i_bookmark.png" menu="menuMap" config="com/esri/solutions/flexviewer/widgets/BookmarkWidget.xml">com/esri/solutions/flexviewer/widgets/BookmarkWidget.swf</widget>	
-		<widget label="Print" icon="com/esri/solutions/flexviewer/assets/images/icons/i_print.png" menu="menuMap" config="com/esri/solutions/flexviewer/widgets/PrintWidget.xml">com/esri/solutions/flexviewer/widgets/PrintWidget.swf</widget>
-		<widget label="Solar Radiation" preload="false" icon="com/esri/solutions/flexviewer/assets/images/icons/i_sun.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/SolarRadiationWidget.xml">com/esri/solutions/flexviewer/widgets/SolarRadiationWidget.swf</widget>
-		<widget label="Solar Projects" icon="com/esri/solutions/flexviewer/assets/images/icons/i_solar.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/LiveLayer_Solar.xml">com/esri/solutions/flexviewer/widgets/LiveLayerWidget.swf</widget>
-		<widget label="Wind Projects" icon="com/esri/solutions/flexviewer/assets/images/icons/i_wind.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/LiveLayer_Wind.xml">com/esri/solutions/flexviewer/widgets/LiveLayerWidget.swf</widget>
-		<widget label="Biomass Projects" icon="com/esri/solutions/flexviewer/assets/images/icons/i_biomass.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/LiveLayer_Biomass.xml">com/esri/solutions/flexviewer/widgets/LiveLayerWidget.swf</widget>
-		<widget label="Hydro Projects" icon="com/esri/solutions/flexviewer/assets/images/icons/i_hydro.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/LiveLayer_Hydro.xml">com/esri/solutions/flexviewer/widgets/LiveLayerWidget.swf</widget>
-		<widget label="Draw" icon="com/esri/solutions/flexviewer/assets/images/icons/i_draw.png" menu="menuWidgets" config="com/esri/solutions/flexviewer/widgets/DrawWidget.xml">com/esri/solutions/flexviewer/widgets/DrawWidget.swf</widget>	
-		<widget label="About" icon="com/esri/solutions/flexviewer/assets/images/icons/i_about.png" menu="menuHelp" config="com/esri/solutions/flexviewer/widgets/AboutWidget.xml">com/esri/solutions/flexviewer/widgets/AboutWidget.swf</widget>
-	</widgets>
-	<links>
-		<link label="Help" icon="com/esri/solutions/flexviewer/assets/images/icons/i_help.png" menu="menuHelp">help.html</link>
-		<link label="Home" icon="com/esri/solutions/flexviewer/assets/images/icons/i_home.png" menu="menuHelp">http://www.esri.com</link>
-		<link label="Resources" icon="com/esri/solutions/flexviewer/assets/images/icons/i_resources.png" menu="menuHelp">http://resources.esri.com</link>
-	</links>
-	<proxytype>php</proxytype> <!-- apache|jsp|asp|php -->
+    <title>Solar Viewer for Flex</title>
+    <subtitle>Solar Potential Viewer</subtitle>
+    <logo>assets/images/logo.png</logo>
+    <style>
+        <colors>0xFFFFFF,0x333333,0x101010,0x000000,0xFFD700</colors>
+        <alpha>0.8</alpha>
+    </style>
+    <!-- replace the following url with your own geometryservice -->
+    <geometryservice url="http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer" />
+    <!-- replace the following key with your own Bing key -->
+    <bing key="Ahw1due6dkmZg98wUJJYLrVmYlDik4oleCg6hoNqx6l2jFYRToImQH1HfH-asjjH"/>
+
+    <!-- UI elements -->
+    <widget left="10"  top="50"    config="widgets/Navigation/NavigationWidget.xml" url="widgets/Navigation/NavigationWidget.swf"/>
+    <widget right="-2" bottom="-2" config="widgets/OverviewMap/OverviewMapWidget.xml" url="widgets/OverviewMap/OverviewMapWidget.swf"/>
+    <widget right="20" top="55"    config="widgets/MapSwitcher/MapSwitcherWidget.xml" url="widgets/MapSwitcher/MapSwitcherWidget.swf"/>
+    <widget left="0"   top="0"     config="widgets/HeaderController/HeaderControllerWidget.xml" url="widgets/HeaderController/HeaderControllerWidget.swf"/>
+
+    <map wraparound180="true" initialextent="-14083000 3139000 -10879000 5458000" fullextent="-20000000 -20000000 20000000 20000000" top="40">
+        <basemaps>
+            <layer label="Streets" type="tiled" visible="true"
+                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
+            <layer label="Aerial"  type="tiled" visible="false"
+                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"/>
+            <layer label="Topo"    type="tiled" visible="false"
+                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
+        </basemaps>
+        <operationallayers>
+            <layer label="Demographics" type="tiled" visible="false" alpha="0.5"
+                   url="http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Household_Income/MapServer">
+                <sublayer id="1" popupconfig="popups/PopUp_Demographics_BlockGroups.xml"/>
+                <sublayer id="2" popupconfig="popups/PopUp_Demographics_Tracts.xml"/>   
+                <sublayer id="3" popupconfig="popups/PopUp_Demographics_Counties.xml"/>
+                <sublayer id="4" popupconfig="popups/PopUp_Demographics_States.xml"/>  
+            </layer> 
+            <layer label="Boundaries and Places" type="tiled" visible="false"
+                   url="http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer"/>
+            <layer label="Fires" type="feature" visible="false" alpha="1.0"
+                   popupconfig="popups/PopUp_Fires.xml"
+                   url="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Fire/Sheep/FeatureServer/0"/>                   
+        </operationallayers>
+    </map>
+
+    <!-- widgets organized into widget containers that manage close/open etc -->
+    <!-- supported layout property options: horizontal(default)|float|vertical|fix-->
+    <widgetcontainer layout="float">
+        <widget label="Bookmarks"         left="430" top="90"
+                icon="assets/images/i_bookmark.png"
+                config="widgets/Bookmark/BookmarkWidget.xml"
+                url="widgets/Bookmark/BookmarkWidget.swf"/>
+        <widget label="Find an address"   left="100" top="90" preload="open"
+                icon="assets/images/i_target.png"
+                config="widgets/Locate/LocateWidget_Bing.xml"
+                url="widgets/Locate/LocateWidget.swf"/>
+        <widget label="Louisville Police" left="590" top="280"
+                icon="assets/images/i_police.png"
+                config="widgets/Query/QueryWidget_Louisville_PoliceStations.xml"
+                url="widgets/Query/QueryWidget.swf"/>
+        <widget label="Search" left="80" top="280"
+                icon="assets/images/i_search.png"
+                config="widgets/Search/SearchWidget_Louisville.xml"
+                url="widgets/Search/SearchWidget.swf"/>
+        <widget label="Earthquakes (GeoRSS)" left="410" top="280"
+                icon="assets/images/i_rss.png"
+                config="widgets/GeoRSS/GeoRSSWidget.xml"
+                url="widgets/GeoRSS/GeoRSSWidget.swf"/>
+        <widget label="Draw and Measure" left="60" top="400"
+                icon="assets/images/i_draw2.png"
+                config="widgets/Draw/DrawWidget.xml"
+                url="widgets/Draw/DrawWidget.swf"/>
+        <widget label="Print" left="390" top="400"
+                icon="assets/images/i_print.png"
+                config="widgets/Print/PrintWidget.xml"
+                url="widgets/Print/PrintWidget.swf"/>
+	<widget label="Solar Radiation"
+                icon="assets/images/i_sun.png"
+                config="widgets/SolarRadiation/SolarRadiationWidget.xml"
+                url="widgets/SolarRadiation/SolarRadiationWidget.swf"/>
+
+        <!--
+        <widget label="My first widget"
+                icon="assets/images/i_widget.png"
+                config="widgets/Samples/HelloWorld/HelloWorldWidget.xml"
+                url="widgets/Samples/HelloWorld/HelloWorldWidget.swf"/>
+        -->
+    </widgetcontainer>
+
 </configuration>

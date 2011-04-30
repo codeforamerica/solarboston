@@ -1,6 +1,0 @@
-Usage
------
-
-Requires Adobe Flash
-Requires Esri Flex Viewer 1.3
-
