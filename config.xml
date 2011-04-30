@@ -69,18 +69,10 @@
                 icon="assets/images/i_target.png"
                 config="widgets/Locate/LocateWidget_Bing.xml"
                 url="widgets/Locate/LocateWidget.swf"/>
-        <widget label="Louisville Police" left="590" top="280"
-                icon="assets/images/i_police.png"
-                config="widgets/Query/QueryWidget_Louisville_PoliceStations.xml"
-                url="widgets/Query/QueryWidget.swf"/>
         <widget label="Search" left="80" top="280"
                 icon="assets/images/i_search.png"
                 config="widgets/Search/SearchWidget_Louisville.xml"
                 url="widgets/Search/SearchWidget.swf"/>
-        <widget label="Earthquakes (GeoRSS)" left="410" top="280"
-                icon="assets/images/i_rss.png"
-                config="widgets/GeoRSS/GeoRSSWidget.xml"
-                url="widgets/GeoRSS/GeoRSSWidget.swf"/>
         <widget label="Draw and Measure" left="60" top="400"
                 icon="assets/images/i_draw2.png"
                 config="widgets/Draw/DrawWidget.xml"
