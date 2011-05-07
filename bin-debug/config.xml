@@ -64,7 +64,7 @@
                 icon="assets/images/i_bookmark.png"
                 config="widgets/Bookmark/BookmarkWidget.xml"
                 url="widgets/Bookmark/BookmarkWidget.swf"/>
-        <widget label="Find an address"   left="100" top="90" preload="open"
+        <widget label="Find an address"   left="100" top="90"
                 icon="assets/images/i_target.png"
                 config="widgets/Locate/LocateWidget_Bing.xml"
                 url="widgets/Locate/LocateWidget.swf"/>

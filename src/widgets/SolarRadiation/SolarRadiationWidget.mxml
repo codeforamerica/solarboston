@@ -25,20 +25,48 @@
 			{
 				if (configXML) // checking for valid content in the configuration file
 				{
-					lbl.text = configXML.content || getDefaultString("helloContent");
+					//lbl.text = configXML.content || getDefaultString("helloContent");
 				}
 			}
+			
+			private function widgetClosedHandler(event:Event):void
+			{
+				//graphicsLayer.visible = false;
+				setMapNavigation(null, null);
+			}			
+			
+			private function widgetOpenedHandler(event:Event):void
+			{
+				//graphicsLayer.visible = true;
+			}
+			
 		]]>
 	</fx:Script>
-	<viewer:WidgetTemplate id="helloWorld"
-						   width="300" height="300">
-		<viewer:layout>
-			<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
-		</viewer:layout>
-		
-		<s:Label id="lbl"
-				 fontSize="18"
-				 fontStyle="italic"
-				 fontWeight="bold"/>
+	<viewer:WidgetTemplate id="wTemplate" height="320">
+		<mx:ViewStack id="viewStack" width="100%" height="100%" creationPolicy="all">
+			<mx:VBox width="100%" height="100%" verticalGap="1">
+
+				
+
+					<mx:SWFLoader id="swfMessage" source="com/esri/solutions/flexviewer/assets/flash/loader.swf" visible="false" />
+					<mx:Text id="txtMessage" text="" styleName="WidgetText" horizontalCenter="0" width="90%"/>
+
+				<mx:AreaChart id="areaChart" height="100%" width="100%" showDataTips="true" color="#FFFFFF">
+					<mx:horizontalAxis>
+						<mx:CategoryAxis title="Month" categoryField="sample"/>
+					</mx:horizontalAxis>
+					<mx:series>
+						<mx:AreaSeries 	id="areaSeries"
+										showDataEffect="slideUp" 
+										hideDataEffect="slideDown"
+										yField="value" 
+										form="curve" 
+										displayName="Monthly Solar Radiation (kWH/m2)"/>
+					</mx:series>
+				</mx:AreaChart>   
+			</mx:VBox>
+			
+	
+		</mx:ViewStack>
 	</viewer:WidgetTemplate>
 </viewer:BaseWidget>
