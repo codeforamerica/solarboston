@@ -13,6 +13,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 -->
 <configuration>
+	 <content>Hello World !</content>
 	<rooftoplayer>http://140.241.251.197/ArcGIS/rest/services/maps/Rooftop_Isolation_tiled/MapServer/1</rooftoplayer>
 	<gpservice>http://140.241.251.197/ArcGIS/rest/services/tools/SolarBostonTools/GPServer/new_RooftopSolarCalculator</gpservice>
 	<geometryservice>http://140.241.251.197/ArcGIS/rest/services/Geometry/GeometryServer</geometryservice>

@@ -89,6 +89,10 @@
                 icon="assets/images/i_print.png"
                 config="widgets/Print/PrintWidget.xml"
                 url="widgets/Print/PrintWidget.swf"/>
+        <widget label="Solar Radiation Widget"
+        icon="assets/images/i_widget.png"
+        config="widgets/SolarRadiation/SolarRadiationWidget.xml"
+        url="widgets/SolarRadiation/SolarRadiationWidget.swf"/>
 
         <!--
         <widget label="My first widget"
