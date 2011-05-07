@@ -33,14 +33,13 @@
     <widget right="20" top="55"    config="widgets/MapSwitcher/MapSwitcherWidget.xml" url="widgets/MapSwitcher/MapSwitcherWidget.swf"/>
     <widget left="0"   top="0"     config="widgets/HeaderController/HeaderControllerWidget.xml" url="widgets/HeaderController/HeaderControllerWidget.swf"/>
 
-    <map wraparound180="true" initialextent="-14083000 3139000 -10879000 5458000" fullextent="-20000000 -20000000 20000000 20000000" top="40">
+    <map wraparound180="true" initialExtent="772733 2953155 778649 2956822" top="40">
         <basemaps>
             <layer label="Streets" type="tiled" visible="true"
-                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"/>
+                   url="http://140.241.251.197/ArcGIS/rest/services/maps/Planimetrics_Base_tiled/MapServer"/>
             <layer label="Aerial"  type="tiled" visible="false"
-                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"/>
-            <layer label="Topo"    type="tiled" visible="false"
-                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
+                   url="http://140.241.251.197/ArcGIS/rest/services/maps/Terrain_Base_tiled/MapServer"/>
+          
         </basemaps>
         <operationallayers>
             <layer label="Demographics" type="tiled" visible="false" alpha="0.5"
@@ -90,9 +89,9 @@
                 config="widgets/Print/PrintWidget.xml"
                 url="widgets/Print/PrintWidget.swf"/>
         <widget label="Solar Radiation Widget"
-        icon="assets/images/i_widget.png"
-        config="widgets/SolarRadiation/SolarRadiationWidget.xml"
-        url="widgets/SolarRadiation/SolarRadiationWidget.swf"/>
+			        icon="assets/images/i_widget.png"
+			        config="widgets/SolarRadiation/SolarRadiationWidget.xml"
+			        url="widgets/SolarRadiation/SolarRadiationWidget.swf"/>
 
         <!--
         <widget label="My first widget"
