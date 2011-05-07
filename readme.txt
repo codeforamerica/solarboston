@@ -3,22 +3,47 @@ ArcGIS Viewer for Flex 2.3.1
 build date 2011-04-26
 ==========================
 
-This file contains the compiled version of the ArcGIS Viewer for Flex 2.3.1.
+This file contains the complete source code for the ArcGIS Viewer for Flex 2.3.1.
 
-===============
-Getting Started
-===============
+============================
+Getting Started - Developers
+============================
 
-See http://links.esri.com/flexviewer-gettingstarted
+See http://links.esri.com/flexviewer-gettingstarted-developers
 
-1. Unzip the download package file; it will create a new folder called "flexviewer".
+1. in Flash Builder 4, Go to File Menu -> Import -> Flash Builder project.
 
-2. Place the flexviewer folder into your machine's Web server folder (e.g., C:\inetpub\wwwroot). 
-   Note: you will need write permissions to this folder.  Depending on your operating system and 
-   user privileges, you might have to ask your systems administrator for help.
+2. Keeping "File" option selected, click "Browse..." button.
 
-3. Open a Web browser and test the Viewer application by entering the matching URL, e.g. 
-   http://<machinename>/flexviewer/index.html
+3. Select flexviewer-2.3.1-src.zip downloaded in step 1, e.g. "C:\Documents and Settings\jack\My Documents\flexviewer-2.3.1-src.zip".
+
+4. "Extract new project to:" textbox will be automatically set to location where the project source will reside,
+    e.g. "C:\Documents and Settings\jack\Adobe Flash Builder 4\FlexViewer.
+    Do not put it onto your web server - you should separate your code location from your output.
+
+5. Click "Finish" button. Project will be created and displayed in the Package Explorer window of Flash Builder 4, e.g. in this case FlexViewer.
+
+
+Optionally:
+
+1. Right click on this project (FlexViewer) -> Click "Properties" -> Click "Flex Build Path".
+
+2. In the "Output folder" textbox at bottom, specify the location of your web server where your
+    Flex Viewer should be deployed, e.g. in case of IIS web server, C:\Inetpub\wwwroot\flexviewerdebug.
+
+3. In "Output folder URL" text box , specify the URL that matches with your output folder specified
+    in last step, e.g. http://localhost/flexviewerdebug/
+
+4. Click OK
+
+5. Rebuild the project.
+
+6. Select the project. Now let's run it - there are multiple ways of doing this.
+    One way is to click green triangle button on top.
+    Another way is click Ctrl-F11.
+    A third way is to click "Run" menu, then select "Run Index".
+
+7. Browser will open and Flex Viewer application will be displayed.
 
 
 ================
