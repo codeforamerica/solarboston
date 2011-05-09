@@ -106,7 +106,7 @@
 			private var co2Savings:Number = 0;
 			
 			
-			private const ICON_URL:String = "com/esri/solutions/flexviewer/assets/images/icons/";	
+			private const ICON_URL:String = "assets/images/";	
 			
 			
 			
@@ -168,7 +168,9 @@
 						break;
 					}
 				}
-				setMapAction(value, status, drawEnd);;		
+				//setMapAction(value, status, drawEnd, );;	
+			
+				
 			}
 			
 			private function clear():void
@@ -251,17 +253,18 @@
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
 				//gpGeometry = event.graphics[0].geometry; 
-				gpGeometry = event.result;
+				/*gpGeometry = event.result[0];
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
 					var gra:Graphic = new Graphic(gpGeometry);
-					geomService.areasAndLengths([gra]);
+					geomService.areasAndLengthsLastResult([gra]);
+					//geomService.areasAndLengths([gra]);
 					
 				}
 				else
 				{
 					Alert.show("User graphic was not a polygon.\nPlease draw a polygon area.","Define Area");
-				}
+				}*/
 			}
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
@@ -296,7 +299,8 @@
 			
 			private function onGPComplete(event:GeoprocessorEvent):void
 			{ 
-				var graphic:Graphic = event.executeResult.parameterValues[0].value.features[0];
+				//var graphic:Graphic = event.executeResult.parameterValues[0].value.features[0];
+				var graphic:Graphic = event.executeResult.results[0];
 				var attributes:Object = graphic.attributes;
 				parseRadiationAttributes(attributes);  
 			}
@@ -450,12 +454,12 @@
 			<mx:VBox width="100%" height="100%" verticalGap="1">
 				<mx:Text text="{descriptionLabel}" styleName="WidgetText" width="100%" textAlign="center"/>
 				<mx:HBox horizontalAlign="center" width="100%" horizontalGap="15">
-					<mx:Image id="pointTool" click="{activateTool(DrawTool.MAPPOINT)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_roof_point.png" useHandCursor="true" buttonMode="true" toolTip="{pointLabel}" width="40" height="40"/>
-					<mx:Image click="{activateTool(DrawTool.POLYGON)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_draw_poly.png" useHandCursor="true" buttonMode="true" toolTip="{polygonLabel}" width="40" height="40"/>
-					<mx:Image click="clear()" source="com/esri/solutions/flexviewer/assets/images/icons/i_clear.png" useHandCursor="true" buttonMode="true" toolTip="{clearLabel}" width="40" height="40"/>
+					<mx:Image id="pointTool" click="{activateTool(DrawTool.MAPPOINT)}" source="assets/images/i_roof_point.png" useHandCursor="true" buttonMode="true" toolTip="{pointLabel}" width="40" height="40"/>
+					<mx:Image click="{activateTool(DrawTool.POLYGON)}" source="assets/images/i_draw_poly.png" useHandCursor="true" buttonMode="true" toolTip="{polygonLabel}" width="40" height="40"/>
+					<mx:Image click="clear()" source="assets/images/i_clear.png" useHandCursor="true" buttonMode="true" toolTip="{clearLabel}" width="40" height="40"/>
 				</mx:HBox>
 				<mx:HBox id="boxMessage" width="100%" visible="{msgVisible}" includeInLayout="{msgVisible}" horizontalAlign="center">
-					<mx:SWFLoader id="swfMessage" source="com/esri/solutions/flexviewer/assets/flash/loader.swf" visible="false" />
+					<mx:SWFLoader id="swfMessage" source="assets/images/loader.swf" visible="false" />
 					<mx:Text id="txtMessage" text="" styleName="WidgetText" horizontalCenter="0" width="90%"/>
 				</mx:HBox>
 				<mx:AreaChart id="areaChart" height="100%" width="100%" showDataTips="true" color="#FFFFFF">
