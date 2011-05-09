@@ -172,10 +172,7 @@
 				
 			}
 			
-		
-		
-			
-			
+	
 			private function clear():void
 			{
 				graphicsLayer.clear();
@@ -215,6 +212,11 @@
 				if (rooftopLayer)
 				{
 					var queryTask:QueryTask = new QueryTask(rooftopLayer);
+					
+					//Need useAMF=false for severs running 9.3
+					queryTask.useAMF = false;
+					
+					
 					queryTask.disableClientCaching = true;
 					var query:Query = new Query();
 					query.geometry = geom;
@@ -256,13 +258,13 @@
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
 				//gpGeometry = event.graphics[0].geometry; 
-				gpGeometry = (event.result as Geometry)[0];
+				gpGeometry = (event.result[0] as Geometry);
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
 					var gra:Graphic = new Graphic(gpGeometry);
 					//geomService.areasAndLengths([gra]);
 					
-					//geomService.areasAndLengths([gra]);
+					
 				}
 				else
 				{
@@ -421,20 +423,6 @@
 				viewStack.selectedIndex = 1;
 			}
 			
-			protected function tbb_itemClickHandler(event:ItemClickEvent):void
-			{
-				var status:String;
-				switch(event.item.label)
-				{
-					case DrawTool.MAPPOINT:
-					{
-						status = pointLabel;
-						break;
-					}
-				}
-				
-				
-			}
 			
 			
 		]]>
