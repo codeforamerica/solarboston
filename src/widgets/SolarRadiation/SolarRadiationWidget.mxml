@@ -4,7 +4,7 @@
 //
 // Copyright (c) 2010 ESRI
 //
-// All rights reserved under the copyright laws of the United States.
+// All rights reserved under the copyright laws of the United Statfes.
 // You may freely redistribute and use this software, with or
 // without modification, provided you include the original copyright
 // and use restrictions.  See use restrictions in the file:
@@ -21,30 +21,28 @@
 	<fx:Script>
 		<![CDATA[
 			
+			import com.esri.ags.FeatureSet;
+			import com.esri.ags.Graphic;
+			import com.esri.ags.Map;
 			import com.esri.ags.events.DrawEvent;
 			import com.esri.ags.events.GeometryServiceEvent;
-			import com.esri.ags.events.GeoprocessorEvent;	
+			import com.esri.ags.events.GeoprocessorEvent;
 			import com.esri.ags.geometry.Geometry;
 			import com.esri.ags.geometry.Polygon;
-			import com.esri.ags.Graphic;
 			import com.esri.ags.layers.GraphicsLayer;
-			import com.esri.ags.Map;
-			import com.esri.ags.symbols.SimpleFillSymbol
+			import com.esri.ags.symbols.SimpleFillSymbol;
 			import com.esri.ags.symbols.SimpleLineSymbol;
-			import com.esri.ags.FeatureSet;
-			import com.esri.ags.tasks.supportClasses.Query;
 			import com.esri.ags.tasks.QueryTask;
 			import com.esri.ags.tasks.supportClasses.JobInfo;
 			import com.esri.ags.tasks.supportClasses.ParameterValue;
+			import com.esri.ags.tasks.supportClasses.Query;
 			import com.esri.ags.tools.DrawTool;
-	
-			//import com.esri.solutions.flexviewer.SiteContainer;		
-			//import com.esri.solutions.flexviewer.utils.WidgetEffects;
+			
 			import mx.collections.*;
 			import mx.controls.Alert;
-			import mx.rpc.AsyncResponder; 
-			import mx.rpc.events.ResultEvent;
+			import mx.rpc.AsyncResponder;
 			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
 			
 			
 			//labels
@@ -266,7 +264,8 @@
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
 			{
-				var area:Number = event.arealengths.areas;
+				//var area:Number = event.arealengths.areas;
+				var area:Number = event.result.areas;
 				var area_m2:Number =  area * conversionFactor; // convert to m2
 				// check geometry for reasonable area
 				if (area_m2 >= 5000)
@@ -423,22 +422,24 @@
 		<mx:NumberFormatter id="currencyFormatter" useThousandsSeparator="true" precision="2"/>
 		<mx:NumberFormatter id="integerFormatter" useThousandsSeparator="true" precision="0"/>
 		
+		<!-- GP SERVICE -->				
+		<esri:Geoprocessor		id="gpService" 
+								showBusyCursor="true"
+								executeComplete="onGPComplete(event)"
+								fault="onFault(event)"/>
+		
+		<!-- GEOMETRY SERVICE -->
+		<esri:GeometryService	id="geomService"
+								showBusyCursor="true"
+								simplifyComplete="simplifyCompleteHandler(event)"
+								areasAndLengthsComplete="areaLengthsCompleteHandler(event)" 
+								fault="onFault(event)"/>
+		
 	</fx:Declarations>
 	
 	
 	
-	<!-- GP SERVICE -->				
-	<esri:Geoprocessor		id="gpService" 
-							showBusyCursor="true"
-							executeComplete="onGPComplete(event)"
-							fault="onFault(event)"/>
 	
-	<!-- GEOMETRY SERVICE -->
-	<esri:GeometryService	id="geomService"
-							showBusyCursor="true"
-							simplifyComplete="simplifyCompleteHandler(event)"
-							arealengthsComplete="areaLengthsCompleteHandler(event)" 
-							fault="onFault(event)"/>
 	
 	<viewer:WidgetTemplate height="320" widgetClosed="widgetClosedHandler(event)" widgetOpened="widgetOpenedHandler(event)">
 		<mx:ViewStack id="viewStack" width="100%" height="100%" creationPolicy="all">
