@@ -157,12 +157,12 @@
 				var status:String;
 				switch (value)
 				{	
-					case Draw.MAPPOINT:
+					case DrawTool.MAPPOINT:
 					{
 						status = pointLabel;
 						break;
 					}			
-					case Draw.POLYGON:
+					case DrawTool.POLYGON:
 					{
 						status = polygonLabel;
 						break;
@@ -250,11 +250,13 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
-				gpGeometry = event.graphics[0].geometry; 
+				//gpGeometry = event.graphics[0].geometry; 
+				gpGeometry = event.result;
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
 					var gra:Graphic = new Graphic(gpGeometry);
 					geomService.areasAndLengths([gra]);
+					
 				}
 				else
 				{
@@ -441,13 +443,13 @@
 	
 	
 	
-	<viewer:WidgetTemplate height="320" widgetClosed="widgetClosedHandler(event)" widgetOpened="widgetOpenedHandler(event)">
+	<viewer:WidgetTemplate height="320" closed="widgetClosedHandler(event)" open="widgetOpenedHandler(event)">
 		<mx:ViewStack id="viewStack" width="100%" height="100%" creationPolicy="all">
 			<mx:VBox width="100%" height="100%" verticalGap="1">
 				<mx:Text text="{descriptionLabel}" styleName="WidgetText" width="100%" textAlign="center"/>
 				<mx:HBox horizontalAlign="center" width="100%" horizontalGap="15">
-					<mx:Image id="pointTool" click="{activateTool(Draw.MAPPOINT)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_roof_point.png" useHandCursor="true" buttonMode="true" toolTip="{pointLabel}" width="40" height="40"/>
-					<mx:Image click="{activateTool(Draw.POLYGON)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_draw_poly.png" useHandCursor="true" buttonMode="true" toolTip="{polygonLabel}" width="40" height="40"/>
+					<mx:Image id="pointTool" click="{activateTool(DrawTool.MAPPOINT)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_roof_point.png" useHandCursor="true" buttonMode="true" toolTip="{pointLabel}" width="40" height="40"/>
+					<mx:Image click="{activateTool(DrawTool.POLYGON)}" source="com/esri/solutions/flexviewer/assets/images/icons/i_draw_poly.png" useHandCursor="true" buttonMode="true" toolTip="{polygonLabel}" width="40" height="40"/>
 					<mx:Image click="clear()" source="com/esri/solutions/flexviewer/assets/images/icons/i_clear.png" useHandCursor="true" buttonMode="true" toolTip="{clearLabel}" width="40" height="40"/>
 				</mx:HBox>
 				<mx:HBox id="boxMessage" width="100%" visible="{msgVisible}" includeInLayout="{msgVisible}" horizontalAlign="center">
