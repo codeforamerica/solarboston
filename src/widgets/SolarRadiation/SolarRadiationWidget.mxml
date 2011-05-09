@@ -20,53 +20,46 @@
 				   widgetConfigLoaded="init()">
 	<fx:Script>
 		<![CDATA[
-			//this function called when the widget's configuration is loaded
+			
 			private function init():void
 			{
-				if (configXML) // checking for valid content in the configuration file
+				/*graphicsLayer = new GraphicsLayer();
+				graphicsLayer.symbol = polySym;
+				map.addLayer(graphicsLayer);
+				if (configXML)
 				{
-					//lbl.text = configXML.content || getDefaultString("helloContent");
+					//labels
+					toolsLabel = configXML.labels.toolslabel || "Tools";
+					calcLabel = configXML.labels.calclabel || "Calculations";
+					descriptionLabel = configXML.labels.descriptionlabel || "Use a tool to select a rooftop or define an area";
+					pointLabel = configXML.labels.pointlabel || "Select Rooftop";
+					polygonLabel = configXML.labels.polygonlabel || "Define Area";
+					clearLabel = configXML.labels.clearlabel || "Clear";
+					loadingLabel = configXML.labels.loadinglabel || "Calculating Solar Potential...";
+					chartLabel = configXML.labels.chartlabel || "Annual Solar Radiation: ";
+					
+					rooftopLayer = configXML.rooftoplayer || "";
+					if (rooftopLayer == "")
+						pointTool.visible = false;
+					gpService.url = configXML.gpservice;
+					geomService.url = configXML.geometryservice;
+					conversionFactor = Number(configXML.conversionfactor) || 1;
 				}
-			}
-			
-			private function widgetClosedHandler(event:Event):void
-			{
-				//graphicsLayer.visible = false;
-				setMapNavigation(null, null);
-			}			
-			
-			private function widgetOpenedHandler(event:Event):void
-			{
-				//graphicsLayer.visible = true;
-			}
+				wTemplate.addTitlebarButton(ICON_URL + "i_piechart.png", calcLabel, showStateCalc);
+				wTemplate.addTitlebarButton(ICON_URL + "i_sun.png", toolsLabel, showStateTools);	
+				*/
+			}	
 			
 		]]>
 	</fx:Script>
-	<viewer:WidgetTemplate id="wTemplate" height="320">
-		<mx:ViewStack id="viewStack" width="100%" height="100%" creationPolicy="all">
-			<mx:VBox width="100%" height="100%" verticalGap="1">
-
-				
-
-					<mx:SWFLoader id="swfMessage" source="com/esri/solutions/flexviewer/assets/flash/loader.swf" visible="false" />
-					<mx:Text id="txtMessage" text="" styleName="WidgetText" horizontalCenter="0" width="90%"/>
-
-				<mx:AreaChart id="areaChart" height="100%" width="100%" showDataTips="true" color="#FFFFFF">
-					<mx:horizontalAxis>
-						<mx:CategoryAxis title="Month" categoryField="sample"/>
-					</mx:horizontalAxis>
-					<mx:series>
-						<mx:AreaSeries 	id="areaSeries"
-										showDataEffect="slideUp" 
-										hideDataEffect="slideDown"
-										yField="value" 
-										form="curve" 
-										displayName="Monthly Solar Radiation (kWH/m2)"/>
-					</mx:series>
-				</mx:AreaChart>   
-			</mx:VBox>
-			
-	
-		</mx:ViewStack>
+	<viewer:WidgetTemplate  id="wTemplate" height="320">
+		<viewer:layout>
+			<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</viewer:layout>
+		
+		<s:Label id="lbl"
+				 fontSize="18"
+				 fontStyle="italic"
+				 fontWeight="bold"/>
 	</viewer:WidgetTemplate>
 </viewer:BaseWidget>
