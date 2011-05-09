@@ -404,12 +404,14 @@
 			
 			private function showStateTools(event:MouseEvent):void
 			{
-				WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 0, 400);
+				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 0, 400);
+				viewStack.selectedIndex = 0;
 			}
 			
 			private function showStateCalc(event:MouseEvent):void
 			{
-				WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
+				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
+				viewStack.selectedIndex = 1;
 			}
 			
 		]]>
