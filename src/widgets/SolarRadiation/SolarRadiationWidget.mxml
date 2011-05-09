@@ -168,8 +168,7 @@
 						break;
 					}
 				}
-				//setMapAction(value, status, drawEnd, );;	
-			
+				setMapAction(value, status, drawEnd, null  );;	
 				
 			}
 			
@@ -252,25 +251,22 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
-				//gpGeometry = event.graphics[0].geometry; 
-				/*gpGeometry = event.result[0];
+				gpGeometry = event.graphics[0].geometry; 
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
 					var gra:Graphic = new Graphic(gpGeometry);
-					geomService.areasAndLengthsLastResult([gra]);
-					//geomService.areasAndLengths([gra]);
-					
+					geomService.areasAndLengths([gra]);
 				}
 				else
 				{
 					Alert.show("User graphic was not a polygon.\nPlease draw a polygon area.","Define Area");
-				}*/
+				}
 			}
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
 			{
 				//var area:Number = event.arealengths.areas;
-				var area:Number = event.result.areas;
+				var area:Number = (event.result as Array)[0];
 				var area_m2:Number =  area * conversionFactor; // convert to m2
 				// check geometry for reasonable area
 				if (area_m2 >= 5000)
