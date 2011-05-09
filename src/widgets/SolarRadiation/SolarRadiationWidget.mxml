@@ -20,7 +20,6 @@
 				   widgetConfigLoaded="init()">
 	<fx:Script>
 		<![CDATA[
-			
 			import com.esri.ags.FeatureSet;
 			import com.esri.ags.Graphic;
 			import com.esri.ags.Map;
@@ -40,6 +39,7 @@
 			
 			import mx.collections.*;
 			import mx.controls.Alert;
+			import mx.events.ItemClickEvent;
 			import mx.rpc.AsyncResponder;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
@@ -168,9 +168,13 @@
 						break;
 					}
 				}
-				setMapAction(value, status, drawEnd, null  );;	
+				setMapAction(value, status, null, drawEnd);;	
 				
 			}
+			
+		
+		
+			
 			
 			private function clear():void
 			{
@@ -251,11 +255,14 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
-				gpGeometry = event.graphics[0].geometry; 
+				//gpGeometry = event.graphics[0].geometry; 
+				gpGeometry = (event.result as Geometry)[0];
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
 					var gra:Graphic = new Graphic(gpGeometry);
-					geomService.areasAndLengths([gra]);
+					//geomService.areasAndLengths([gra]);
+					
+					//geomService.areasAndLengths([gra]);
 				}
 				else
 				{
@@ -413,6 +420,22 @@
 				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
 				viewStack.selectedIndex = 1;
 			}
+			
+			protected function tbb_itemClickHandler(event:ItemClickEvent):void
+			{
+				var status:String;
+				switch(event.item.label)
+				{
+					case DrawTool.MAPPOINT:
+					{
+						status = pointLabel;
+						break;
+					}
+				}
+				
+				
+			}
+			
 			
 		]]>
 	</fx:Script>
