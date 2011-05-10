@@ -18,6 +18,18 @@
 				   xmlns:esri="http://www.esri.com/2008/ags"
 				   xmlns:viewer="com.esri.viewer.*"
 				   widgetConfigLoaded="init()">
+	
+	<viewer:states>
+		<s:State name="bkmList"/>
+		<s:State name="bkmAdd"/>
+	</viewer:states>
+	
+	<viewer:transitions>
+		<s:Transition autoReverse="true" toState="*">
+			<s:Fade targets="{[bkmList, bkmAdd]}"/>
+		</s:Transition>
+	</viewer:transitions>
+	
 	<fx:Script>
 		<![CDATA[
 			import com.esri.ags.FeatureSet;
@@ -411,16 +423,22 @@
 				graphicsLayer.visible = true;
 			}
 			
-			private function showStateTools(event:MouseEvent):void
+			
+			//private function showStateTools(event:MouseEvent):void
+			private function showStateTools():void
 			{
 				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 0, 400);
-				viewStack.selectedIndex = 0;
+				this.currentState = "bkmAdd";
+				wTemplate.selectedTitlebarButtonIndex = 0; // used to indicate selected titlebar button when automatically switching state
 			}
-			
-			private function showStateCalc(event:MouseEvent):void
+				
+
+			//private function showStateCalc(event:MouseEvent):void
+			private function showStateCalc():void
 			{
 				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
-				viewStack.selectedIndex = 1;
+				//viewStack.selectedIndex = 1;
+				this.currentState = "bkmList";
 			}
 			
 			
@@ -457,8 +475,16 @@
 	
 	
 	<viewer:WidgetTemplate id="wTemplate" height="320" closed="widgetClosedHandler(event)" open="widgetOpenedHandler(event)">
-		<mx:ViewStack id="viewStack" width="100%" height="100%" creationPolicy="all">
-			<mx:VBox width="100%" height="100%" verticalGap="1">
+		<s:Group id="bkmList"
+				 width="100%" height="100%"
+				 visible="false"
+				 visible.bkmList="true">
+			<s:layout>
+				<s:VerticalLayout gap="10"
+								  horizontalAlign="center"
+								  paddingTop="10"/>
+			</s:layout>
+			
 				<mx:Text text="{descriptionLabel}" styleName="WidgetText" width="100%" textAlign="center"/>
 				<mx:HBox horizontalAlign="center" width="100%" horizontalGap="15">
 					<mx:Image id="pointTool" click="{activateTool(DrawTool.MAPPOINT)}" source="assets/images/i_roof_point.png" useHandCursor="true" buttonMode="true" toolTip="{pointLabel}" width="40" height="40"/>
@@ -482,9 +508,18 @@
 										displayName="Monthly Solar Radiation (kWH/m2)"/>
 					</mx:series>
 				</mx:AreaChart>   
-			</mx:VBox>
-			
-			<mx:VBox width="100%" height="100%" verticalGap="1">
+	
+		</s:Group>
+		
+		<s:Group id="bkmAdd"
+				 width="100%" height="100%"
+				 visible="false"
+				 visible.bkmAdd="true">
+			<s:layout>
+				<s:VerticalLayout gap="10"
+								  horizontalAlign="center"
+								  paddingTop="10"/>
+			</s:layout>
 				<mx:Grid width="100%" styleName="WidgetText">
 					
 					<!-- TOTAL ROOF AREA -->
@@ -568,7 +603,7 @@
 					</mx:GridRow>
 					
 				</mx:Grid>
-			</mx:VBox>
-		</mx:ViewStack>
+		</s:Group>
+		
 	</viewer:WidgetTemplate>
 </viewer:BaseWidget>
