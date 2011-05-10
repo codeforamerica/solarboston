@@ -44,6 +44,7 @@
 			import com.esri.ags.symbols.SimpleFillSymbol;
 			import com.esri.ags.symbols.SimpleLineSymbol;
 			import com.esri.ags.tasks.QueryTask;
+			import com.esri.ags.tasks.supportClasses.AreasAndLengthsParameters;
 			import com.esri.ags.tasks.supportClasses.JobInfo;
 			import com.esri.ags.tasks.supportClasses.ParameterValue;
 			import com.esri.ags.tasks.supportClasses.Query;
@@ -269,19 +270,27 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
-				//gpGeometry = event.graphics[0].geometry; 
+				
 				gpGeometry = (event.result[0] as Geometry);
+				
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
-					var gra:Graphic = new Graphic(gpGeometry);
-					//geomService.areasAndLengths([gra]);
+					var polygon:Geometry = (event.result as Array)[0];
+				
+					var lp:AreasAndLengthsParameters = new AreasAndLengthsParameters();
+					lp.areaUnit = GeometryService.UNIT_SQUARE_FEET;
+					lp.polygons = [polygon];
 					
+					
+					geomService.areasAndLengths(lp);
 					
 				}
+				
 				else
 				{
 					Alert.show("User graphic was not a polygon.\nPlease draw a polygon area.","Define Area");
 				}
+				
 			}
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
