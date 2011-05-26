@@ -20,13 +20,13 @@
 				   widgetConfigLoaded="init()">
 	
 	<viewer:states>
-		<s:State name="bkmList"/>
-		<s:State name="bkmAdd"/>
+		<s:State name="idTools"/>
+		<s:State name="idCalc"/>
 	</viewer:states>
 	
 	<viewer:transitions>
 		<s:Transition autoReverse="true" toState="*">
-			<s:Fade targets="{[bkmList, bkmAdd]}"/>
+			<s:Fade targets="{[idTools, idCalc]}"/>
 		</s:Transition>
 	</viewer:transitions>
 	
@@ -429,7 +429,10 @@
 			
 			private function widgetOpenedHandler(event:Event):void
 			{
-				graphicsLayer.visible = true;
+				if (graphicsLayer)
+				{
+					graphicsLayer.visible = true;
+				}
 			}
 			
 			
@@ -437,7 +440,7 @@
 			private function showStateTools():void
 			{
 				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 0, 400);
-				this.currentState = "bkmAdd";
+				this.currentState = "idTools";
 				wTemplate.selectedTitlebarButtonIndex = 0; // used to indicate selected titlebar button when automatically switching state
 			}
 				
@@ -447,7 +450,7 @@
 			{
 				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
 				//viewStack.selectedIndex = 1;
-				this.currentState = "bkmList";
+				this.currentState = "idCalc";
 			}
 			
 			
@@ -484,10 +487,10 @@
 	
 	
 	<viewer:WidgetTemplate id="wTemplate" height="320" closed="widgetClosedHandler(event)" open="widgetOpenedHandler(event)">
-		<s:Group id="bkmList"
+		<s:Group id="idTools"
 				 width="100%" height="100%"
 				 visible="false"
-				 visible.bkmList="true">
+				 visible.idTools="true">
 			<s:layout>
 				<s:VerticalLayout gap="10"
 								  horizontalAlign="center"
@@ -520,10 +523,10 @@
 	
 		</s:Group>
 		
-		<s:Group id="bkmAdd"
+		<s:Group id="idCalc"
 				 width="100%" height="100%"
 				 visible="false"
-				 visible.bkmAdd="true">
+				 visible.idCalc="true">
 			<s:layout>
 				<s:VerticalLayout gap="10"
 								  horizontalAlign="center"
