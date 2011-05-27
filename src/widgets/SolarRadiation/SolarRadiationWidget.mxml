@@ -212,9 +212,6 @@
 					case Geometry.POLYGON:
 					{
 						graphicsLayer.add(event.graphic)
-						//var gra:Graphic = new Graphic(geom);
-						//geomService.simplify([gra]);
-						//geomService.simplify([ geom ]);
 						var polygon:Polygon = event.graphic.geometry as Polygon;
 						geomService.simplify([ polygon ]);
 						break;
@@ -232,17 +229,14 @@
 				if (rooftopLayer)
 				{
 					var queryTask:QueryTask = new QueryTask(rooftopLayer);
-					
-				
-					
+							
 					//Need useAMF=false for severs running 9.3
 					if (useAMF)
 					{
 						queryTask.useAMF = useAMF == "true";
 					}
 					
-					
-					
+							
 					queryTask.disableClientCaching = true;
 					var query:Query = new Query();
 					query.geometry = geom;
@@ -283,47 +277,30 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
-				if (event.result)
+				
+				gpGeometry = (event.result[0] as Geometry);
+				
+				if (gpGeometry.type == Geometry.POLYGON)
 				{
-					gpGeometry = (event.result as Array)[0];
-					
 					var areasAndLengthsParameters:AreasAndLengthsParameters = new AreasAndLengthsParameters();
 					areasAndLengthsParameters.areaUnit = GeometryService.UNIT_SQUARE_FEET;
 					areasAndLengthsParameters.polygons = [ gpGeometry ];
 					
 					geomService.areasAndLengths(areasAndLengthsParameters);
-				}
-				
-				/*gpGeometry = (event.result[0] as Geometry);
-				
-				if (gpGeometry.type == Geometry.POLYGON)
-				{
-					var polygon:Geometry = (event.result as Array)[0];
-				
-					var lp:AreasAndLengthsParameters = new AreasAndLengthsParameters();
-					lp.areaUnit = GeometryService.UNIT_SQUARE_FEET;
-					lp.polygons = [polygon];
-					
-					
-					geomService.areasAndLengths(lp);
 					
 				}
-				
 				else
 				{
 					Alert.show("User graphic was not a polygon.\nPlease draw a polygon area.","Define Area");
-				}*/
+				}
 				
 			}
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
 			{
-				
-				//const area:String = myNumberFormatter.format(result.areas[0]);
-				//var area:Number = event.arealengths.areas;
-				
 				var area:Number = event.result.areas[0];
 				var area_m2:Number =  area * conversionFactor; // convert to m2
+				
 				// check geometry for reasonable area
 				if (area_m2 >= 5000)
 				{
@@ -352,12 +329,8 @@
 			
 			private function onGPComplete(event:GeoprocessorEvent):void
 			{ 
-				// event.executeResult.results[0].value.features[0].attributes.SUM;
 				var graphic:Graphic = event.executeResult.results[0].value.features[0];
 			
-				//var graphic:Graphic = event.executeResult.parameterValues[0].value.features[0];
-				
-				//var graphic:Graphic = event.executeResult.results[0];
 				var attributes:Object = graphic.attributes;
 				parseRadiationAttributes(attributes);  
 			}
@@ -467,7 +440,6 @@
 			}
 			
 			
-			//private function showStateTools(event:MouseEvent):void
 			private function showStateTools():void
 			{
 			
@@ -475,8 +447,6 @@
 				wTemplate.selectedTitlebarButtonIndex = 0; // used to indicate selected titlebar button when automatically switching state
 			}
 				
-
-			//private function showStateCalc(event:MouseEvent):void
 			private function showStateCalc():void
 			{
 			
