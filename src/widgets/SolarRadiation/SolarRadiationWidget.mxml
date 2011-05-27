@@ -150,8 +150,9 @@
 					conversionFactor = Number(configXML.conversionfactor) || 1;
 					useAMF = configXML.useAMF;
 				}
-				wTemplate.addTitlebarButton(ICON_URL + "i_piechart.png", calcLabel, showStateCalc);
 				wTemplate.addTitlebarButton(ICON_URL + "i_sun.png", toolsLabel, showStateTools);	
+				wTemplate.addTitlebarButton(ICON_URL + "i_piechart.png", calcLabel, showStateCalc);
+				
 				
 			}	
 			
@@ -448,7 +449,7 @@
 			//private function showStateTools(event:MouseEvent):void
 			private function showStateTools():void
 			{
-				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 0, 400);
+			
 				this.currentState = "idTools";
 				wTemplate.selectedTitlebarButtonIndex = 0; // used to indicate selected titlebar button when automatically switching state
 			}
@@ -457,9 +458,9 @@
 			//private function showStateCalc(event:MouseEvent):void
 			private function showStateCalc():void
 			{
-				//WidgetEffects.flipWidget(this, viewStack, "selectedIndex", 1, 400);
-				//viewStack.selectedIndex = 1;
+			
 				this.currentState = "idCalc";
+			
 			}
 			
 			
