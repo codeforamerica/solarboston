@@ -212,8 +212,11 @@
 					case Geometry.POLYGON:
 					{
 						graphicsLayer.add(event.graphic)
-						var gra:Graphic = new Graphic(geom);
-						geomService.simplify([gra]);
+						//var gra:Graphic = new Graphic(geom);
+						//geomService.simplify([gra]);
+						//geomService.simplify([ geom ]);
+						var polygon:Polygon = event.graphic.geometry as Polygon;
+						geomService.simplify([ polygon ]);
 						break;
 					}
 				}
@@ -280,8 +283,18 @@
 			
 			private function simplifyCompleteHandler(event:GeometryServiceEvent):void
 			{
+				if (event.result)
+				{
+					gpGeometry = (event.result as Array)[0];
+					
+					var areasAndLengthsParameters:AreasAndLengthsParameters = new AreasAndLengthsParameters();
+					areasAndLengthsParameters.areaUnit = GeometryService.UNIT_SQUARE_FEET;
+					areasAndLengthsParameters.polygons = [ gpGeometry ];
+					
+					geomService.areasAndLengths(areasAndLengthsParameters);
+				}
 				
-				gpGeometry = (event.result[0] as Geometry);
+				/*gpGeometry = (event.result[0] as Geometry);
 				
 				if (gpGeometry.type == Geometry.POLYGON)
 				{
@@ -299,14 +312,17 @@
 				else
 				{
 					Alert.show("User graphic was not a polygon.\nPlease draw a polygon area.","Define Area");
-				}
+				}*/
 				
 			}
 			
 			private function areaLengthsCompleteHandler(event:GeometryServiceEvent):void
 			{
+				
+				//const area:String = myNumberFormatter.format(result.areas[0]);
 				//var area:Number = event.arealengths.areas;
-				var area:Number = (event.result as Array)[0];
+				
+				var area:Number = event.result.areas[0];
 				var area_m2:Number =  area * conversionFactor; // convert to m2
 				// check geometry for reasonable area
 				if (area_m2 >= 5000)
@@ -322,21 +338,26 @@
 			
 			private function runGPTask(poly:Polygon):void
 			{  
+			
 				var featureSet:FeatureSet = new FeatureSet([]);
 				featureSet.features.push({geometry:poly});
 				showMessage(loadingLabel, true);
 				var params:Object = 
 					{
 						"Input_Feature": featureSet, 
-						"env:outSR": map.spatialReference.wkid 
-					};
+						"env:outSR": map.spatialReference.wkid
+					}
 				gpService.execute(params);
 			}			 
 			
 			private function onGPComplete(event:GeoprocessorEvent):void
 			{ 
+				// event.executeResult.results[0].value.features[0].attributes.SUM;
+				var graphic:Graphic = event.executeResult.results[0].value.features[0];
+			
 				//var graphic:Graphic = event.executeResult.parameterValues[0].value.features[0];
-				var graphic:Graphic = event.executeResult.results[0];
+				
+				//var graphic:Graphic = event.executeResult.results[0];
 				var attributes:Object = graphic.attributes;
 				parseRadiationAttributes(attributes);  
 			}
@@ -481,7 +502,9 @@
 		<esri:Geoprocessor		id="gpService" 
 								showBusyCursor="true"
 								executeComplete="onGPComplete(event)"
-								fault="onFault(event)"/>
+								fault="onFault(event)"
+								useAMF="false"
+								/>
 		
 		<!-- GEOMETRY SERVICE -->
 		<esri:GeometryService	id="geomService"
