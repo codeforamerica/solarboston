@@ -86,6 +86,8 @@
 			
 			private var rooftopLayer:String;
 			
+			private var useAMF:String;
+			
 			private var gpGeometry:Geometry;
 			
 			private var lineSym:SimpleLineSymbol = new SimpleLineSymbol("solid", 0xFF0000, 0.8, 2);
@@ -146,6 +148,7 @@
 					gpService.url = configXML.gpservice;
 					geomService.url = configXML.geometryservice;
 					conversionFactor = Number(configXML.conversionfactor) || 1;
+					useAMF = configXML.useAMF;
 				}
 				wTemplate.addTitlebarButton(ICON_URL + "i_piechart.png", calcLabel, showStateCalc);
 				wTemplate.addTitlebarButton(ICON_URL + "i_sun.png", toolsLabel, showStateTools);	
@@ -226,8 +229,14 @@
 				{
 					var queryTask:QueryTask = new QueryTask(rooftopLayer);
 					
+				
+					
 					//Need useAMF=false for severs running 9.3
-					queryTask.useAMF = false;
+					if (useAMF)
+					{
+						queryTask.useAMF = useAMF == "true";
+					}
+					
 					
 					
 					queryTask.disableClientCaching = true;
