@@ -495,7 +495,7 @@
 	
 	
 	
-	<viewer:WidgetTemplate id="wTemplate" height="320" closed="widgetClosedHandler(event)" open="widgetOpenedHandler(event)">
+	<viewer:WidgetTemplate id="wTemplate" height="320" width="350" closed="widgetClosedHandler(event)" open="widgetOpenedHandler(event)">
 		<s:Group id="idTools"
 				 width="100%" height="100%"
 				 visible="false"
