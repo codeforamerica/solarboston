@@ -54,3 +54,5 @@ Flex Viewer: http://help.arcgis.com/en/webapps/flexviewer/index.html
 Flex API http://help.arcgis.com/en/webapi/flex/index.html
 
 Flex Viewer License agreement at http://www.esri.com/legal/pdfs/mla_e204_e300/english.pdf
+
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/solarboston.png)](http://stats.codeforamerica.org/projects/solarboston)
